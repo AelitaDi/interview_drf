@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 
@@ -8,3 +9,4 @@ class LoginAPIView(TokenObtainPairView):
 
 class ProfileUpdateAPIView(generics.UpdateAPIView):
     """Update profile."""
+    permission_classes = [IsAuthenticated]
