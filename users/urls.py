@@ -1,7 +1,7 @@
 from django.urls.conf import path
 
 from users.apps import UsersConfig
-from users.views import LoginAPIView, ProfileUpdateAPIView
+from users.views import ProfileUpdateAPIView, LoginAPIView
 
 app_name = UsersConfig.name
 
