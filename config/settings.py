@@ -136,6 +136,34 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# SPECTACULAR_SETTINGS
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Interview',
+    'VERSION': '0.0.1',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_SETTINGS': {
+        'filter': True,
+        'persistAuthorization': True,
+        'deepLinking': True,
+        'displayRequestDuration': True,
+    },
+    'COMPONENT_SPLIT_REQUEST': True,
+    'SECURITY': [
+        {
+            'Bearer': [],
+        }
+    ],
+    'SCHEMA_COMPONENTS': {
+        'securitySchemes': {
+            'Bearer': {
+                'type': 'apiKey',
+                'in': 'header',
+                'name': 'Authorization',
+            }
+        }
+    },
+}
+
 # JWT
 ACCESS_TOKEN_LIFETIME = os.getenv('ACCESS_TOKEN_LIFETIME_MIN', '60')
 REFRESH_TOKEN_LIFETIME = os.getenv('REFRESH_TOKEN_LIFETIME_MIN', f'{60 * 24}')
