@@ -44,7 +44,6 @@ python3 manage.py collectstatic
 ```
 
 * Создать суперпользователя
-* 
 ```
 python3 manage.py create_admin
 ```
