@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'base',
     'users',
+    'forest',
 ]
 
 MIDDLEWARE = [
@@ -165,44 +166,44 @@ SPECTACULAR_SETTINGS = {
 }
 
 # JWT
-ACCESS_TOKEN_LIFETIME = os.getenv('ACCESS_TOKEN_LIFETIME_MIN', '60')
-REFRESH_TOKEN_LIFETIME = os.getenv('REFRESH_TOKEN_LIFETIME_MIN', f'{60 * 24}')
-if ACCESS_TOKEN_LIFETIME.isdigit():
-    ACCESS_TOKEN_LIFETIME = int(ACCESS_TOKEN_LIFETIME)
-if REFRESH_TOKEN_LIFETIME.isdigit():
-    REFRESH_TOKEN_LIFETIME = int(REFRESH_TOKEN_LIFETIME)
-
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=ACCESS_TOKEN_LIFETIME),
-    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(minutes=REFRESH_TOKEN_LIFETIME),
-    'ROTATE_REFRESH_TOKENS': True,
-    'BLACKLIST_AFTER_ROTATION': False,
-    'UPDATE_LAST_LOGIN': True,
-
-    'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.UserLoginSerializer',
-    'TOKEN_REFRESH_SERIALIZER': 'users.serializers.RefreshCustomSerializer',
-
-    'ALGORITHM': 'HS256',
-    'SIGNING_KEY': SECRET_KEY,
-    'VERIFYING_KEY': '',
-    'AUDIENCE': None,
-    'ISSUER': None,
-    'JSON_ENCODER': None,
-    'JWK_URL': None,
-    'LEEWAY': 0,
-
-    'AUTH_HEADER_TYPES': ('Bearer',),
-    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
-    'USER_ID_FIELD': 'id',
-    'USER_ID_CLAIM': 'user_id',
-    'CHECK_USER_IS_ACTIVE': True,
-
-    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
-    'TOKEN_TYPE_CLAIM': 'token_type',
-    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
-
-    'JTI_CLAIM': 'jti',
-}
+# ACCESS_TOKEN_LIFETIME = os.getenv('ACCESS_TOKEN_LIFETIME_MIN', '60')
+# REFRESH_TOKEN_LIFETIME = os.getenv('REFRESH_TOKEN_LIFETIME_MIN', f'{60 * 24}')
+# if ACCESS_TOKEN_LIFETIME.isdigit():
+#     ACCESS_TOKEN_LIFETIME = int(ACCESS_TOKEN_LIFETIME)
+# if REFRESH_TOKEN_LIFETIME.isdigit():
+#     REFRESH_TOKEN_LIFETIME = int(REFRESH_TOKEN_LIFETIME)
+#
+# SIMPLE_JWT = {
+#     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=ACCESS_TOKEN_LIFETIME),
+#     'REFRESH_TOKEN_LIFETIME': datetime.timedelta(minutes=REFRESH_TOKEN_LIFETIME),
+#     'ROTATE_REFRESH_TOKENS': True,
+#     'BLACKLIST_AFTER_ROTATION': False,
+#     'UPDATE_LAST_LOGIN': True,
+#
+#     'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.UserLoginSerializer',
+#     'TOKEN_REFRESH_SERIALIZER': 'users.serializers.RefreshCustomSerializer',
+#
+#     'ALGORITHM': 'HS256',
+#     'SIGNING_KEY': SECRET_KEY,
+#     'VERIFYING_KEY': '',
+#     'AUDIENCE': None,
+#     'ISSUER': None,
+#     'JSON_ENCODER': None,
+#     'JWK_URL': None,
+#     'LEEWAY': 0,
+#
+#     'AUTH_HEADER_TYPES': ('Bearer',),
+#     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+#     'USER_ID_FIELD': 'id',
+#     'USER_ID_CLAIM': 'user_id',
+#     'CHECK_USER_IS_ACTIVE': True,
+#
+#     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+#     'TOKEN_TYPE_CLAIM': 'token_type',
+#     'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+#
+#     'JTI_CLAIM': 'jti',
+# }
 
 # JWT
 ACCESS_TOKEN_LIFETIME = os.getenv('ACCESS_TOKEN_LIFETIME_MIN', 60)

@@ -25,6 +25,7 @@ from config.docs import url_docs
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('users.urls', namespace='user')),
+    path('api/forest/', include('forest.urls', namespace='forest'))
 ]
 
 if settings.DEBUG:
