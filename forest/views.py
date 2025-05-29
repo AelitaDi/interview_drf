@@ -1,17 +1,16 @@
-# from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 from rest_framework.generics import ListAPIView, CreateAPIView
 
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import IsAuthenticated
+
 from forest.models import Tree
 from forest.serializers import TreeSerializer, AdminTreeSerializer, TreeCreateSerializer
 from users.permissions import IsStaffUser
 
 
-@csrf_exempt
-class TreeListAPIView(LoginRequiredMixin, ListAPIView):
+class TreeListAPIView(ListAPIView):
     """Tree list."""
+    permission_classes = [IsAuthenticated,]
+
     def get_queryset(self):
         """Checks user permissions for queryset."""
         if IsStaffUser().has_permission(self.request, self):
@@ -27,13 +26,15 @@ class TreeListAPIView(LoginRequiredMixin, ListAPIView):
             return TreeSerializer
 
 
-@csrf_exempt
-class TreeCreateAPIView(LoginRequiredMixin, CreateAPIView):
+class TreeCreateAPIView(CreateAPIView):
     """Tree create."""
     queryset = Tree.objects.all()
     serializer_class = TreeCreateSerializer
+    permission_classes = [IsAuthenticated,]
 
     def perform_create(self, serializer):
+        # print('fffffffffffffffffffffffffffff')
+        # print(self.request.user)
         tree = serializer.save()
         tree.owner = self.request.user
         tree.save()

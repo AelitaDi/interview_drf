@@ -6,9 +6,7 @@ NULLABLE = {"blank": True, "null": True}
 
 
 class Tree(models.Model):
-    """
-    Tree model.
-    """
+    """Tree model."""
 
     TYPE_OF_TREE_CHOICES = [
         ("pine", "Сосна"),

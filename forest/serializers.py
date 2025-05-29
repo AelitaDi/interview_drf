@@ -19,7 +19,7 @@ class AdminTreeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tree
-        fields = "__all__"
+        fields = ("name", "type_of_tree", "owner", "created_at",)
 
 
 class TreeSerializer(serializers.ModelSerializer):
@@ -35,4 +35,4 @@ class TreeCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tree
-        fields = ("type_of_tree",)
+        fields = "__all__"
