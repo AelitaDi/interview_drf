@@ -22,7 +22,7 @@ class Tree(models.Model):
                                     verbose_name="Вид дерева",
                                     help_text="Выберите вид своего дерева",)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата и время посадки")
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="trees")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE, related_name="trees")
 
     class Meta:
         verbose_name = "дерево"

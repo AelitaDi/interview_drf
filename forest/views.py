@@ -33,8 +33,10 @@ class TreeCreateAPIView(CreateAPIView):
     permission_classes = [IsAuthenticated,]
 
     def perform_create(self, serializer):
-        # print('fffffffffffffffffffffffffffff')
-        # print(self.request.user)
+        """Save self.request.user as owner."""
         tree = serializer.save()
         tree.owner = self.request.user
         tree.save()
+
+    # def post(self):
+    #     return super().post
